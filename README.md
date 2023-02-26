@@ -7,12 +7,12 @@ We use Python and utilsise Streamlit to create a web-based interface for interac
 
 #### Installation Instructions
 
-os - handling operating system operations.
-json - for working with JSON objects.
-Streamlit - creating web-based interfaces.
-Web3 - connecting to the Ethereum network.
-pathlib - for working with file paths.
-dotenv - loading environment variables.
+* os - handling operating system operations.
+* json - for working with JSON objects.
+* Streamlit - creating web-based interfaces.
+* Web3 - connecting to the Ethereum network.
+* pathlib - for working with file paths.
+* dotenv - loading environment variables.
 
 The Web interface has three main sections; Register New Artwork, Edit the Product Listing & Get Price History. 
 
@@ -39,12 +39,12 @@ Overall the Seller Page provides a user freidnly interface for interacting with 
 
 We import the necessary Python libraries for interacting with Ethereum:
 
-os 
-requests 
-dotenv 
-bip44 
-web3 
-Account
+* os 
+* requests 
+* dotenv 
+* bip44 
+* web3 
+* Account
 
 ### Wallet Function 
 
