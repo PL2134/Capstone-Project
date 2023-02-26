@@ -50,6 +50,18 @@ Account
 
 The wallet composes of three main functions: Generate the account, Get Balance and Sending Transactions.
 
-Generate Acc
+#### Generate Account 
+
+This function creates a new Ethereum account by generating a mnemonic seed phrase, creating a new Wallet object from the bip44 library, deriving an Ethereum private key from the mnemonic, and then converting the private key to an Ethereum account using the web3 library. This function returns the newly created account object.
+
+#### Get Balance 
+
+This function takes an Ethereum account address and returns the account's balance in Ether, by first retrieving the account's balance in Wei using the web3 library, then converting the Wei value to Ether. 
+
+#### Send Transaction 
+
+This function sends an Ethereum transaction by constructing a raw transaction object with the given Ethereum account, recipient address, and value in Ether.
+
+Overall, these functions can be used to interact with the Ethereum network, such as by querying an account's balance or sending an authorized transaction to another account on the network.
 
 
