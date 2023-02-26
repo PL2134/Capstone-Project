@@ -90,30 +90,30 @@ from crypto_wallet import generate_account, get_balance, send_transaction
 item_database = {
     "Manhattan": [
         "Manhattan",
-        "0x8e5F1c3b8067F8137ABEa0e0f78597D29BAdBd75",
+        "0x8394538F1274c88881bfFeEaC908f58AF6915F71",
         "token_address_manhattan",
-        0.20,
+        5,
         "Images/manhattan.jpg",
     ],
     "Martini": [
         "Martini",
-        "0xd2671FBaDead020604660d0f707DC625EfAFb199",
+        "0x89f23A1CeDC0a1F55E5670e8a9DBeAC91c2c522f",
         "token_address_martini",
-        0.33,
+        7,
         "Images/martini.jpg",
     ],
     "Negroni": [
         "Negroni",
-        "0x052f5033855d44fcF74b16492839428Ed667848f",
+        "0x8609a337DC5EbafbbC4B26E97abC11a01A84E178",
         "token_address_negroni",
-        0.19,
+        4,
         "Images/negroni.jpg",
     ],
     "Bellini": [
         "Bellini",
-        "0x297845b491b0503a7f4638Fcbc1946dA5f758B11",
+        "0x1dEE50936A73155c1609431B0F0f2AFa61C326c6",
         "token_address_bellini",
-        0.16,
+        2,
         "Images/bellini.jpg",
     ],
 }
