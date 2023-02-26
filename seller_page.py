@@ -41,7 +41,7 @@ def load_contract():
 # Load the contract
 contract = load_contract()
 
-st.title("Welcome to YourArtShop")
+st.title("Welcome to Cocktails2Go")
 st.write("Choose an account to get started")
 accounts = w3.eth.accounts
 address = st.selectbox("Select Account", options=accounts)
@@ -58,6 +58,13 @@ initial_price = st.text_input("Enter the price (ETH)")
 artwork_uri = st.text_input("Enter the URI to the artwork")
 
 if st.button("Register Artwork"):
+    token_id = contract.functions.registerArtwork(
+        address,
+        artwork_name,
+        artist_name,
+        int(initial_price),
+        artwork_uri
+    ).call()
     tx_hash = contract.functions.registerArtwork(
         address,
         artwork_name,
@@ -66,8 +73,13 @@ if st.button("Register Artwork"):
         artwork_uri
     ).transact({'from': address, 'gas': 1000000})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+
+    st.write("TokenId:") 
+    st.write(token_id)
+
     st.write("Transaction receipt mined:")
     st.write(dict(receipt))
+    st.balloons()
 st.markdown("---")
 
 
@@ -88,7 +100,7 @@ if st.button("Update price"):
         report_uri
     ).transact({"from": w3.eth.accounts[0]})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-    st.write(receipt)
+    st.write(receipt["transactionHash"])
 st.markdown("---")
 
 ################################################################################
@@ -96,7 +108,7 @@ st.markdown("---")
 ################################################################################
 st.markdown("## Get the price history")
 art_token_id = st.number_input("Artwork ID", value=0, step=1)
-if st.button("Get Price Reports"):
+if st.button("Get Price Reports Details"):
     appraisal_filter = contract.events.Appraisal.createFilter(
         fromBlock=0,
         argument_filters={"tokenId": art_token_id}
@@ -105,9 +117,9 @@ if st.button("Get Price Reports"):
     if appraisals:
         for appraisal in appraisals:
             report_dictionary = dict(appraisal)
-            st.markdown("### Price Report Event Log")
-            st.write(report_dictionary)
-            st.markdown("### Price Report Details")
+            #st.markdown("### Price Report Event Log")
+            #st.write(report_dictionary)
+            # st.markdown("### Price Report Details")
             st.write(report_dictionary["args"])
     else:
         st.write("This artwork has no changes to price.")
