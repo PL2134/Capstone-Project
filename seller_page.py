@@ -41,7 +41,7 @@ def load_contract():
 # Load the contract
 contract = load_contract()
 
-st.title("Welcome to Cocktails2Go")
+st.title("Welcome to NFT Bar")
 st.write("Choose an account to get started")
 accounts = w3.eth.accounts
 address = st.selectbox("Select Account", options=accounts)
