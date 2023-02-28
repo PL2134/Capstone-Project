@@ -1,46 +1,29 @@
 pragma solidity ^0.5.5;
 
-import "https://github.com/athiwatp/openzeppelin-solidity/blob/master/contracts/token/ERC721/ERC721Full.sol";
+import "https://github.com/athiwatp/openzeppelin-solidity/blob/master/contracts/token/ERC721/ERC721.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Counters.sol";
 
-contract ArtRegistry is ERC721Full {
-    constructor() public ERC721Full("ArtRegistryToken", "ART") {}
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
-    struct Artwork {
-        string name;
-        string artist;
-        uint256 price;
-    }
+contract ArtToken is ERC721URIStorage {
+  using Counters for Counters.Counter;
+  Counters.Counter private _tokenIds;
+  address marketplaceContract;
+  event NFTMinted(uint256);
 
-    mapping(uint256 => Artwork) public artCollection;
+  constructor(address _marketplaceContract) ERC721("NFT Bar", "nft") {
+    marketplaceContract = _marketplaceContract;
+  }
 
-    event Appraisal(uint256 tokenId, uint256 price, string reportURI);
-
-    function registerArtwork(
-        address owner,
-        string memory name,
-        string memory artist,
-        uint256 initialPrice,
-        string memory tokenURI
-    ) public returns (uint256) {
-        uint256 tokenId = totalSupply();
-
-        _mint(owner, tokenId);
-        _setTokenURI(tokenId, tokenURI);
-
-        artCollection[tokenId] = Artwork(name, artist, initialPrice);
-
-        return tokenId;
-    }
-
-    function editPrice(
-        uint256 tokenId,
-        uint256 newPrice,
-        string memory reportURI
-    ) public returns (uint256) {
-        artCollection[tokenId].price = newPrice;
-
-        emit Appraisal(tokenId, newPrice, reportURI);
-
-        return artCollection[tokenId].price;
-    }
+  function mint(string memory _tokenURI) public {
+    _tokenIds.increment();
+    uint256 newTokenId = _tokenIds.current();
+    _safeMint(msg.sender, newTokenId);
+    _setTokenURI(newTokenId, _tokenURI);
+    setApprovalForAll(marketplaceContract, true);
+    emit NFTMinted(newTokenId);
+  }
 }

@@ -74,8 +74,7 @@ if st.button("Register Artwork"):
     ).transact({'from': address, 'gas': 1000000})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
 
-    st.write("TokenId:") 
-    st.write(token_id)
+    st.write("TokenId:", token_id) 
 
     st.write("Transaction receipt mined:")
     st.write(dict(receipt))
