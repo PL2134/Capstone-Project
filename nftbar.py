@@ -112,7 +112,6 @@ drink_db = {
             20,
             "0x297845b491b0503a7f4638Fcbc1946dA5f758B11",
             "images/tea_puerh.jpg"]
-
 }
 
 #initialise an empty list to store selected artwork as user clicked on add to cart
@@ -161,9 +160,7 @@ def get_drink():
             if st.button("Add To Cart", key = number):
                 st.session_state.selected_artwork.append([db_list[number][1],db_list[number][3],db_list[number][4]])
 
-
 get_drink()
-
 
 #########################################################################################
 # Streamlit Sidebar Code - Start
@@ -212,5 +209,3 @@ if st.sidebar.button("Checkout"):
 
     #reset selected_artwork
     st.session_state.selected_artwork=[]
-
-    st.snow()
