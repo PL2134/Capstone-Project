@@ -1,5 +1,8 @@
 # Capstone-Project
 
+## Project Overview 
+
+Our goal was to build a user freidnly web application 
 
 ## Seller Page 
 
@@ -93,4 +96,4 @@ The sidebar contains the client account address, Ethernet balance in ether, a se
 When the "Send Transaction" button is clicked, the send_transaction function is called with three parameters: the buyer's account, the drink_address of the seller, and the total_price of the Cocktail NFT. The function returns a transaction hash, which is displayed on the web interface. If the transaction is successful, a balloon celebration appears on the screen.
 
 
-
+## Future Plans 
