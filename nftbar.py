@@ -201,13 +201,16 @@ st.sidebar.markdown(f"### Amount payable grouped by seller:")
 st.sidebar.dataframe(sellertotal_df , use_container_width = True)
 
 if st.sidebar.button("Checkout"):
-   # transaction_hash = send_transaction(w3, account, seller_address, totalpayable)
-
+    
     st.sidebar.markdown("#### Validated TransactionHash")
-    # st.sidebar.write(transaction_hash)
 
-    st.snow()
+    for seller in range(0,len(sellertotal_df)):
+        seller_address = sellertotal_df.index[seller]
+        amt_payable = float(sellertotal_df.iloc[seller])
+        transaction_hash = send_transaction(w3, account, seller_address, amt_payable)      
+        st.sidebar.write(transaction_hash)
 
+    #reset selected_artwork
     st.session_state.selected_artwork=[]
 
-
+    st.snow()
