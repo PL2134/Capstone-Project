@@ -65,3 +65,26 @@ This function sends an Ethereum transaction by constructing a raw transaction ob
 Overall, these functions can be used to interact with the Ethereum network, such as by querying an account's balance or sending an authorized transaction to another account on the network.
 
 
+## Cocktail NFT Buyer Interface 
+
+#### Installation Instructions
+
+* streamlit 
+* dataclasses
+* typing
+* web3
+
+#### Import functions from crypto_wallet.py
+
+* generate_account
+* get_balance
+* send_transaction
+
+#### Our Cocktails 
+
+The item_database variable is a dictionary that stores the information for each Cocktail NFT. The get_drinks() function is used to display this information on the web interface.
+
+#### Streamlit Code 
+
+
+
