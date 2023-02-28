@@ -1,9 +1,10 @@
 # Cryptocurrency Wallet
 ################################################################################
 
-# This file contains the Ethereum transaction functions that you have created throughout this module’s lessons.
-# By using import statements, you will integrate this `crypto_wallet.py` Python script
-# into the KryptoJobs2Go interface program that is found in the `krypto_jobs.py` file.
+# This file contains the Ethereum transaction functions.
+# By using import statements, we will integrate this `crypto_wallet.py` Python script
+# into the NFT BAR interface program that is found in the `Classic_Cocktails_NFT.py`, 
+# `1_Elegant_Cocktails_NFT.py` and `2_Long_Drinks_NFT.py` files.
 
 ################################################################################
 # Imports
