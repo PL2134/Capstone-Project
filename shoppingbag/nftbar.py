@@ -1,3 +1,5 @@
+#print("Script is being executed")
+
 #imports
 import os
 import json
@@ -113,15 +115,16 @@ drink_db = {
 
 }
 
-#initialise an empty dict to store selected artwork 
-#as user clicked on add to cart
-selected_artwork=[]
+#initialise an empty list to store selected artwork as user clicked on add to cart
+if "selected_artwork" not in st.session_state:
+        st.session_state.selected_artwork = []
 
 # Create a get_drink function to display the listing
 def get_drink():
+        
     """Display the database of artwork information."""
     db_list = list(drink_db.values())
-
+    
     with col1:
         st.header("Cocktail")
         for number in range(0,3):
@@ -132,7 +135,7 @@ def get_drink():
             artwork_price = st.write("Price: ", db_list[number][3],"eth")
             address = st.write("Seller address: ", db_list[number][4])
             if st.button("Add To Cart", key = number):
-                selected_artwork.append([db_list[number][1],db_list[number][3]])
+               st.session_state.selected_artwork.append([db_list[number][1],db_list[number][3],db_list[number][4]])
 
     with col2:
         st.header("Coffee")
@@ -144,8 +147,7 @@ def get_drink():
             artwork_price = st.write("Price: ", db_list[number][3],"eth")
             address = st.write("Seller address: ", db_list[number][4])
             if st.button("Add To Cart", key = number):
-                selected_artwork.append([db_list[number][1],db_list[number][3]])
-
+               st.session_state.selected_artwork.append([db_list[number][1],db_list[number][3],db_list[number][4]])
 
     with col3:
         st.header("Tea")
@@ -157,10 +159,10 @@ def get_drink():
             artwork_price = st.write("Price: ", db_list[number][3],"eth")
             address = st.write("Seller address: ", db_list[number][4])
             if st.button("Add To Cart", key = number):
-                selected_artwork.append([db_list[number][1],db_list[number][3]])
- 
-get_drink()
+                st.session_state.selected_artwork.append([db_list[number][1],db_list[number][3],db_list[number][4]])
 
+
+get_drink()
 
 
 #########################################################################################
@@ -181,16 +183,31 @@ st.sidebar.write(ether)
 
 st.sidebar.markdown("---------")
 
-st.sidebar.header("*My Shopping Bag:*")
+st.sidebar.header("**My Shopping Cart:**") 
 
-selected_df = pd.DataFrame(selected_artwork, 
-                           columns = ["Name","Price"])
+selected_df = pd.DataFrame(st.session_state.selected_artwork, 
+                           columns = ["Name","Price","Seller_Address"])
+
+totalpayable = selected_df["Price"].sum()
+sellertotal_df = selected_df.groupby("Seller_Address")["Price"].sum()
 
 st.sidebar.dataframe(selected_df, use_container_width=True)
 
-st.sidebar.markdown("## Total Payable in Ether:")
+if st.sidebar.button("Clear cart"):
+    st.session_state.selected_artwork = []
+
+st.sidebar.markdown(f"## Total Payable in Ether: {totalpayable}")
+st.sidebar.markdown(f"### Amount payable grouped by seller:")
+st.sidebar.dataframe(sellertotal_df , use_container_width = True)
 
 if st.sidebar.button("Checkout"):
+   # transaction_hash = send_transaction(w3, account, seller_address, totalpayable)
+
     st.sidebar.markdown("#### Validated TransactionHash")
-    #st.sidebar.write(transaction_hash)
+    # st.sidebar.write(transaction_hash)
+
     st.snow()
+
+    st.session_state.selected_artwork=[]
+
+
