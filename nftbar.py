@@ -118,6 +118,16 @@ drink_db = {
 if "selected_artwork" not in st.session_state:
         st.session_state.selected_artwork = []
 
+if "btnoff" not in st.session_state:
+        st.session_state.btnoff = [0]*12
+
+def reset():
+        st.session_state.selected_artwork=[]
+        st.session_state.btnoff = [0]*12
+
+def update_btnoff(id, newvalue):
+        st.session_state.btnoff[id] = newvalue
+
 # Create a get_drink function to display the listing
 def get_drink():
         
@@ -133,8 +143,10 @@ def get_drink():
             artist_name = st.write("Artist: ", db_list[number][2])
             artwork_price = st.write("Price: ", db_list[number][3],"eth")
             address = st.write("Seller address: ", db_list[number][4])
-            if st.button("Add To Cart", key = number):
+            if st.button("Add To Cart", key = number, disabled = bool(st.session_state.btnoff[number]), 
+                        on_click = update_btnoff, args=(number,1)):
                st.session_state.selected_artwork.append([db_list[number][1],db_list[number][3],db_list[number][4]])
+
 
     with col2:
         st.header("Coffee")
@@ -145,7 +157,8 @@ def get_drink():
             artist_name = st.write("Artist: ", db_list[number][2])
             artwork_price = st.write("Price: ", db_list[number][3],"eth")
             address = st.write("Seller address: ", db_list[number][4])
-            if st.button("Add To Cart", key = number):
+            if st.button("Add To Cart", key = number, disabled = bool(st.session_state.btnoff[number]), 
+                        on_click = update_btnoff, args=(number,1)):
                st.session_state.selected_artwork.append([db_list[number][1],db_list[number][3],db_list[number][4]])
 
     with col3:
@@ -157,8 +170,10 @@ def get_drink():
             artist_name = st.write("Artist: ", db_list[number][2])
             artwork_price = st.write("Price: ", db_list[number][3],"eth")
             address = st.write("Seller address: ", db_list[number][4])
-            if st.button("Add To Cart", key = number):
+            if st.button("Add To Cart", key = number, disabled = bool(st.session_state.btnoff[number]), 
+                        on_click = update_btnoff, args=(number,1)):
                 st.session_state.selected_artwork.append([db_list[number][1],db_list[number][3],db_list[number][4]])
+
 
 get_drink()
 
@@ -190,8 +205,8 @@ sellertotal_df = selected_df.groupby("Seller_Address")["Price"].sum()
 
 st.sidebar.dataframe(selected_df, use_container_width=True)
 
-if st.sidebar.button("Clear cart"):
-    st.session_state.selected_artwork = []
+if st.sidebar.button("Clear cart", on_click=reset):
+        ""
 
 st.sidebar.markdown(f"## Total Payable in Ether: {totalpayable}")
 st.sidebar.markdown(f"### Amount payable grouped by seller:")
@@ -206,6 +221,3 @@ if st.sidebar.button("Checkout"):
         amt_payable = float(sellertotal_df.iloc[seller])
         transaction_hash = send_transaction(w3, account, seller_address, amt_payable)      
         st.sidebar.write(transaction_hash)
-
-    #reset selected_artwork
-    st.session_state.selected_artwork=[]
