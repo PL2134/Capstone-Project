@@ -33,7 +33,7 @@ We allow the user to enter an artwork token ID and retrieve the price history fo
 
 Overall the Seller Page provides a user freidnly interface for interacting with the Ethereum smart contract allowing users to register new artwork, update artwork prcies and retriefe proce history.
 
-[Seller Page Screenshots](/Screenshots)
+[Seller Page Screenshots](/Screenshots/Seller)
 
 ## Buyer Page 
 
@@ -68,6 +68,7 @@ This function sends an Ethereum transaction by constructing a raw transaction ob
 
 Overall, these functions can be used to interact with the Ethereum network, such as by querying an account's balance or sending an authorized transaction to another account on the network.
 
+[Buyer Page Screenshots](/Screenshots/Buyer)
 
 ## Cocktail NFT Buyer Interface 
 
