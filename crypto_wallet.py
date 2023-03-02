@@ -4,7 +4,7 @@
 # This file contains the Ethereum transaction functions.
 # By using import statements, we will integrate this `crypto_wallet.py` Python script
 # into the NFT BAR interface program that is found in the `Classic_Cocktails_NFT.py`, 
-# `1_Elegant_Cocktails_NFT.py` and `2_Long_Drinks_NFT.py` files.
+# `1_Elegant_Cocktails_NFT.py` and `2_Long_Drinks_NFT.py` or the `nftbar.py` files.
 
 ################################################################################
 # Imports
