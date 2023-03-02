@@ -33,6 +33,7 @@ We allow the user to enter an artwork token ID and retrieve the price history fo
 
 Overall the Seller Page provides a user freidnly interface for interacting with the Ethereum smart contract allowing users to register new artwork, update artwork prcies and retriefe proce history.
 
+[Seller Page Images](Images)
 
 ## Buyer Page 
 
