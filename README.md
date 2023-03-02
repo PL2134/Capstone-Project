@@ -2,11 +2,11 @@
 
 ## Project Overview 
 
-Our team developed a user-friendly web application allowing users to purchase NFT artworks. Sellers can add their artworks and set prices using a Solidity smart contract. For the Sellers page, we used Python and Streamlit to create three main sections: "Register New Artwork," "Edit the Product Listing," and "Get Price History." For the Buyers page, we used various libraries to create three primary functions: "Generate Account," "Get Balance," and "Send Transaction." We prioritized user-friendliness and security, implementing measures to protect sensitive data. Overall, we're proud of our achievement and hope our application benefits those entering the world of NFT art. 
+Our team developed a user-friendly web application allowing users to purchase NFT artworks. Sellers can add their artworks and set prices using a Solidity smart contract. For the Sellers page, we used Solidity and Streamlit to create three main sections: "Register New Artwork," "Edit the Product Listing," and "Get Price History." For the Buyers page, we used Python, Streamlit and various libraries to create four primary functions: "Add To Cart", "Generate Account," "Get Balance", "Send Transaction". We prioritized user-friendliness and security, implementing measures to protect sensitive data. Overall, we're proud of our achievement and hope our application benefits those entering the world of NFT art. 
 
 ## Seller Page 
 
-We use Python and utilsise Streamlit to create a web-based interface for interacting with a smart contract on the Ethereum blockchain.
+We use Solidity and utilsise Streamlit to create a web-based interface for interacting with a smart contract on the Ethereum blockchain.
 
 #### Installation Instructions
 
@@ -56,7 +56,7 @@ The wallet composes of three main functions: Generate the account, Get Balance a
 
 #### Generate Account 
 
-This function creates a new Ethereum account by generating a mnemonic seed phrase, creating a new Wallet object from the bip44 library, deriving an Ethereum private key from the mnemonic, and then converting the private key to an Ethereum account using the web3 library. This function returns the newly created account object.
+This function creates a new Ethereum account by getting the mnemonic seed phrase from the env file, creating a new Wallet object from the bip44 library, deriving an Ethereum private key from the mnemonic, and then converting the private key to an Ethereum account using the web3 library. This function returns the newly created account object.
 
 #### Get Balance 
 
@@ -99,7 +99,7 @@ When the "Send Transaction" button is clicked, the send_transaction function is 
 
 
 ## Future Plans 
-We have exciting future plans to enhance our web application and provide a better user experience. We are considering using external data storage to provide more storage space for user-generated content. Additionally, we plan to combine the seller and buyer pages to enable communication, add a shopping cart to the buyer page, and a sold status to show what has sold on our website. We will also introduce a transaction history and product review system, and a sale history feature to show who owned the art before. These additions will provide transparency and enhance the overall value of our platform.
+We have exciting future plans to enhance our web application and provide a better user experience. We are considering using external data storage to provide more storage space for user-generated content. Additionally, we plan to combine the seller and buyer pages to enable communication, and a sold status to show what has sold on our website. We will also introduce a transaction history and product review system, and a sale history feature to show who owned the art before. These additions will provide transparency and enhance the overall value of our platform.
 
 ## Refrences 
 
