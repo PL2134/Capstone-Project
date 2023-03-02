@@ -19,7 +19,7 @@ w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
 ################################################################################
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def load_contract():
 
     # Load the contract ABI
